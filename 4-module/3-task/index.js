@@ -8,7 +8,7 @@ function highlight(table) {
       const isAvailable = statusCell.getAttribute("data-available") === "true";
       row.classList.add(isAvailable ? "available" : "unavailable");
     } else {
-      row.setAttribute("hidden", true);
+      row.hidden = true;
     }
 
     const genderCell = cells[2];
