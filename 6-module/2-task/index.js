@@ -4,6 +4,7 @@ export default class ProductCard {
   constructor(product) {
     this.product = product;
     this.elem = this.#render();
+    this.#clickElement();
   }
 
   #render() {
@@ -24,15 +25,19 @@ export default class ProductCard {
       </div>
       `);
 
-    const button = card.querySelector(".card__button");
+    return card;
+  }
+
+  #clickElement() {
+    const button = this.elem.querySelector(".card__button");
+
     button.addEventListener("click", () => {
       const event = new CustomEvent("product-add", {
         detail: this.product.id,
         bubbles: true,
       });
-      card.dispatchEvent(event);
-    });
 
-    return card;
+      this.elem.dispatchEvent(event);
+    });
   }
 }
